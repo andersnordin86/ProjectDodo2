@@ -60,5 +60,15 @@ body {
     border: 5px solid black;
     position: fixed;
     left: 30%;
+}
 
+#cal {
+    width: 400px;
+    background-color: #ffffff;
+    padding: 15px;
+}
+#about {
+padding: 46px;
+margin:50px;
+]
 }
