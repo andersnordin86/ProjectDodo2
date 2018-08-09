@@ -62,7 +62,7 @@ body {
 
     position: fixed;
     left: 30%;
-    top: 15%;
+      top: 15%;
     margin: 50px auto;
     opacity: 0.9;
     border-left: 15px solid #3EC8AC;
@@ -81,8 +81,16 @@ body {
     background-image: -moz-linear-gradient(left, #3EC8AC 0%, #4E90A4 100%), -moz-linear-gradient(left, #3EC8AC 0%, #4E90A4 100%);
     background-image: -o-linear-gradient(left, #3EC8AC 0%, #4E90A4 100%), -o-linear-gradient(left, #3EC8AC 0%, #4E90A4 100%);
     background-image: linear-gradient(to right, #3EC8AC 0%, #4E90A4 100%), linear-gradient(to right, #3EC8AC 0%, #4E90A4 100%);
+}
 
-
+#cal {
+    width: 400px;
+    background-color: #ffffff;
+    padding: 15px;
+}
+#about {
+padding: 46px;
+margin:50px;
 }
 
 
@@ -98,6 +106,7 @@ body {
     max-width: 1000px;
     position: relative;
     margin: auto;
+
 }
 
 /* Hide the images by default */
