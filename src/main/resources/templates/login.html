@@ -8,6 +8,24 @@
     <title>Login</title>
 </head>
 <body>
+<div class="top-menu clearfix">
+    <div id="top-logo">
+        <a th:href=@{index}>
+            <img src="photos/top-logo-MD.png" alt="övre högra logo">
+        </a>
+    </div>
+    <ul id="menu">
+        <li><a th:href="@{players}">Team</a></li>
+        <li><a th:href="@{news}">News</a></li>
+        <li><a th:href="@{calendar}">Calendar</a></li>
+        <li><a th:href="@{pakaaa}">Pakaaa</a></li>
+        <li><a th:href="@{photos}">Photo Gallery</a></li>
+        <li><a th:href="@{contactinformation}">Contact</a></li>
+        <li><a th:href="@{about}">About us</a></li>
+    </ul>
+</div>
+
+
 <p>Enter your username and password!</p>
 <form action="/login" method="post">
     <input type="text" name="username" placeholder="Enter username">
