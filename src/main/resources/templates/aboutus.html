@@ -12,14 +12,25 @@
 
 </head>
 <body>
-  <div class="top-menu clearfix">
+<div class="top-menu clearfix">
     <div id="top-logo">
         <a th:href=@{index}>
             <img src="photos/top-logo-MD.png" alt="övre högra logo">
         </a>
     </div>
-<div id="about"></div>
-<div style="background-color:white; align-content:right; color:black;padding:20px;">
+    <ul id="menu">
+        <li><a th:href="@{players}">Team</a></li>
+        <li><a th:href="@{news}">News</a></li>
+        <li><a th:href="@{calendar}">Calendar</a></li>
+        <li><a th:href="@{pakaaa}">Pakaaa</a></li>
+        <li><a th:href="@{photos}">Photo Gallery</a></li>
+        <li><a th:href="@{contactinformation}">Contact</a></li>
+        <li><a th:href="@{about}">About us</a></li>
+        <li><a th:href="@{login}">Log in</a></li>
+    </ul>
+</div>
+
+<div id="about">
     <img src="https://files.slack.com/files-pri/TB0SX1W0P-FC5DA5ZTM/29433165_1798586630187599_3562491290077713282_n.jpg" alt="Mighty Dronts" style="float:right;width:442px;height:442px;%">
     <h2>About us</h2>
     <p>Mighty Dronts startades av en grupp likasinnade hockeyspelare. Likasinnade på det sätt att man delade värderingarna om människors lika värde.</p>

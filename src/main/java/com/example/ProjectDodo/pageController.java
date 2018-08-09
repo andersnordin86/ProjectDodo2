@@ -35,4 +35,8 @@ public class pageController {
     public String getPlayers() {
         return "players";
     }
+    @GetMapping("/index")
+    public String getIndex() {
+        return "index";
+    }
 }
