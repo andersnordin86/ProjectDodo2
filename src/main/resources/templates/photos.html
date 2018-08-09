@@ -28,12 +28,22 @@
     </ul>
 </div>
 
-
-
 <!-- Slideshow container -->
 <div class="slideshow-container">
 
-    <!-- Full-width images with number and caption text -->
+
+
+    <div class="mySlides fade" th:each="photo : ${photos}">
+        <img th:src="${photo.url}" style="width:100%">
+    </div>
+
+
+
+
+
+
+
+    <!-- Full-width images with number and caption text
     <div class="mySlides fade">
 
         <img th:src=@{photos/29433165_1798586630187599_3562491290077713282_n.jpg} style="width:100%">
@@ -76,7 +86,7 @@
 
     </div>
 
-
+-->
 
 
 
