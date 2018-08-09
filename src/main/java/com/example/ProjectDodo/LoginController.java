@@ -15,6 +15,12 @@ public class LoginController {
     public String getLogin() {
         return "login";
     }
+
+
+    @GetMapping("/index")
+    public String getindex() {
+        return "index";
+    }
 /*
     @PostMapping("/login")
     public String postForm(@RequestParam(name = "username") String username, @RequestParam(name = "password") String password, HttpServletRequest request) {
