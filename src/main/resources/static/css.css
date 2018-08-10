@@ -103,7 +103,7 @@ body {
     opacity: 0.9;
     margin-left: 30%;
 }
-#about {
+#about p {
     background-color:white;
     align-content:right;
     color:black;
@@ -112,7 +112,14 @@ body {
 }
 
 
+.contact-table {
+    font-family: "Comic Sans MS";
+    margin: auto;
+    width: 350px;
+}
+#bumper {
 
+}
 
 
 /*FROM BELLOW TO SLIDESHOW*/
