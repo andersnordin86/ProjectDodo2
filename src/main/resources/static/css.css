@@ -28,9 +28,22 @@ body {
     padding: 0;
 }
 
+
 #top-logo img {
     width: 100%;
     height: auto;
+}
+
+
+#Pakaaa {
+    width: 200px;
+    height: auto;
+    cursor: pointer;
+    margin: auto;
+
+}
+#Pakaaa img:hover{
+    opacity: 0.7;
 }
 
 #menu {
