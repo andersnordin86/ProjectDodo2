@@ -4,10 +4,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import javax.sql.DataSource;
-import java.sql.Connection;
-import java.sql.Date;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
+import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Component
 public class NewsRepository {
@@ -26,5 +25,32 @@ public class NewsRepository {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+    }
+
+    public List<Stories> getStories() {
+        List <Stories> allStories = new ArrayList<>();
+        List <Stories> allStoriesNewFirst = new ArrayList<>();
+
+        try {
+            Connection conn = dataSource.getConnection();
+            PreparedStatement ps = conn.prepareStatement("SELECT * FROM stories");
+            ResultSet resultSet = ps.executeQuery();
+
+            while(resultSet.next()) {
+                Stories story = new Stories(
+                        resultSet.getDate("createddate"),
+                        resultSet.getString("headline"),
+                        resultSet.getString("storytext"));
+                allStories.add(story);
+
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        for (int i =allStories.size()-1;i>0;i--){
+            allStoriesNewFirst.add(allStories.get(i));
+            System.out.println(i);
+        }
+        return allStoriesNewFirst;
     }
 }

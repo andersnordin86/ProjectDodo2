@@ -6,6 +6,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,6 +19,20 @@ public class pageController {
 
     @Autowired
     private photoRepository pr;
+    @Autowired
+    private NewsRepository newsRepository;
+
+    private List<Stories> allStories = new ArrayList<>();
+
+    @GetMapping("/home")
+    public String secret(HttpServletRequest request) {
+        HttpSession session = request.getSession(true);
+        if (session.getAttribute("loggedIn") != null)
+            return "home";
+        else
+            return "redirect:login";
+    }
+
 
     @Autowired
     private PlayerRepository plr;
@@ -27,8 +43,10 @@ public class pageController {
     }
 
     @GetMapping("/news")
-    public String getNews() {
-        return "news";
+    public ModelAndView getNews() {
+
+        allStories = newsRepository.getStories();
+        return new ModelAndView("news").addObject("allStories",allStories);
     }
 
     @GetMapping("/contactinformation")

@@ -26,5 +26,13 @@
         <li><a th:href="@{login}">Log in</a></li>
     </ul>
 </div>
+
+
+<div class="newsdiv" th:each="story : ${allStories}">
+    <h1 th:text="${story.headline}"></h1>
+    <p th:text="${story.createddate}"></p>
+    <p th:text="${story.storytext}"></p>
+</div>
+
 <div id="News"><p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quia ab incidunt reiciendis hic minima perspiciatis neque? Adipisci quod asperiores tempore provident repudiandae laboriosam quia soluta beatae suscipit, facere consequatur praesentium?</p></div>
 </body>
