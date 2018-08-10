@@ -32,7 +32,19 @@
     </ul>
 </div>
 <div id="cal"></div>
-<script>
+
+<script th:inline="javascript">
+    /*<![CDATA[*/
+
+
+    var allEvents = /*[[${allEvents}]]*/'default';
+
+
+    /*]]>*/
+</script>
+
+<script th:inline="javascript">
+
     $('#cal').fullCalendar({
         header: {
             left: 'prev,next today',
@@ -51,14 +63,13 @@
         navLinks: true, // can click day/week names to navigate views
         editable: true,
         eventLimit: true, // allow "more" link when too many events
-        events: [
-            {
-                title: 'Game 19:00',
-                start: '2018-08-08',
-                description: 'This is a cool event'
-            }
-            // more events here
-        ]
+
+
+
+
+
+
+    events: allEvents
     });
 </script>
 </body>
