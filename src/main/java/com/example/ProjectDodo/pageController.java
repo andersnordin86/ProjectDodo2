@@ -5,6 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -12,6 +13,11 @@ public class pageController {
 
     @Autowired
     private photoRepository pr;
+    @Autowired
+    private NewsRepository newsRepository;
+
+    private List<Stories> allStories = new ArrayList<>();
+
 
     @GetMapping("/about")
     public String getAbout() {
@@ -19,8 +25,10 @@ public class pageController {
     }
 
     @GetMapping("/news")
-    public String getNews() {
-        return "news";
+    public ModelAndView getNews() {
+
+        allStories = newsRepository.getStories();
+        return new ModelAndView("news").addObject("allStories",allStories);
     }
     @GetMapping("/contactinformation")
     public String getContactinformation() {
