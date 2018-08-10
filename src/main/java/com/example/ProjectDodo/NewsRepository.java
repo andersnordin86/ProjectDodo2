@@ -29,6 +29,7 @@ public class NewsRepository {
 
     public List<Stories> getStories() {
         List <Stories> allStories = new ArrayList<>();
+        List <Stories> allStoriesNewFirst = new ArrayList<>();
 
         try {
             Connection conn = dataSource.getConnection();
@@ -41,11 +42,15 @@ public class NewsRepository {
                         resultSet.getString("headline"),
                         resultSet.getString("storytext"));
                 allStories.add(story);
+
             }
         } catch (SQLException e) {
             e.printStackTrace();
         }
-
-        return allStories;
+        for (int i =allStories.size()-1;i>0;i--){
+            allStoriesNewFirst.add(allStories.get(i));
+            System.out.println(i);
+        }
+        return allStoriesNewFirst;
     }
 }
