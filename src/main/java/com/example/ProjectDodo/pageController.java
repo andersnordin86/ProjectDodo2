@@ -6,6 +6,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -21,6 +23,15 @@ public class pageController {
     private NewsRepository newsRepository;
 
     private List<Stories> allStories = new ArrayList<>();
+
+    @GetMapping("/home")
+    public String secret(HttpServletRequest request) {
+        HttpSession session = request.getSession(true);
+        if (session.getAttribute("loggedIn") != null)
+            return "home";
+        else
+            return "redirect:login";
+    }
 
 
     @GetMapping("/about")
