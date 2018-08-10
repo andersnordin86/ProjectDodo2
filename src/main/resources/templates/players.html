@@ -6,8 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link href="css.css" rel="stylesheet">
+    <link rel="stylesheet" href="lightbox.min.css">
     <title>Players</title>
-
 </head>
 <body>
 <div class="top-menu clearfix">
@@ -26,12 +26,22 @@
         <li><a th:href="@{about}">About us</a></li>
         <li><a th:href="@{login}">Log in</a></li>
     </ul>
+    <table style="width:100%">
+        <th style="font-size: xx-large">This is our team:</th>
+    </table>
 
 </div>
-<div id="Players"><p>This is our team:</p>
-<div class="playersdiv" th:each="player : ${allPlayers}">
-    <img id="fotot" th:src="${player.image}")>
+<div id="Players">
+    <div class="playersdiv" th:each="player : ${allPlayers}">
+        <a th:href="${player.image}" data-lightbox="players"><img class="fotot" th:src="${player.image}"/></a>
+    </div>
 </div>
-</div>
-
+<script src="jquery.min.js"></script>
+<script src="lightbox.min.js"></script>
+<script>
+    lightbox.option({
+        'resizeDuration': 200,
+        'wrapAround': true
+    });
+</script>
 </body>
