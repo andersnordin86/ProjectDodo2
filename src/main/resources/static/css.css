@@ -209,11 +209,14 @@ body {
     height: auto;
 }
 
-#fotot {
+.fotot {
     height: 100%;
     float: left;
     width: 33.33%;
     padding: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s;
 }
 
 @-webkit-keyframes fade {
