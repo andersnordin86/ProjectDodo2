@@ -48,4 +48,5 @@ public class pageController {
     public String getIndex() {
         return "index";
     }
+
 }

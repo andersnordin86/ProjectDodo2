@@ -5,16 +5,24 @@
     <title>Title</title>
 </head>
 <body>
-<p>welcome home, create a new user</p>
+<h1>Welcome home</h1>
+<h2>Create a new user</h2>
 <form action="/home" method="post">
     <input type="text" name="username" placeholder="Enter username">
     <input type ="text" name="firstname" placeholder="Enter firstname">
     <input type ="text" name="lastname" placeholder="Enter lastname">
     <input type="password" name="password" placeholder="Enter password">
     <input type="text" name="email" placeholder="Enter email">
-
     <input type="submit" value="Create new member">
+</form>
+<hr>
+<h2>Create stories</h2>
+<form action="/createstory" method="post">
+    <input type="text" name="headline" placeholder="Headline"><br>
+    <textarea name="storytext" placeholder="Storytext" rows="10" cols="50"></textarea>
+    <input type="submit" value="Create new story">
 </form>
 
 </body>
 </html>
+

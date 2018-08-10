@@ -19,7 +19,6 @@ public class LoginController {
     public String getLogin() {
         return "login";
     }
-
     @PostMapping("/login")
     public String postForm(@RequestParam(name = "username") String username, @RequestParam(name = "password") String password, HttpServletRequest request) {
         boolean member = loginRepository.getMember(username, password);
