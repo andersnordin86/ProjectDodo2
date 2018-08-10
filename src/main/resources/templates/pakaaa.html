@@ -1,10 +1,11 @@
 <!DOCTYPE html>
-<html lang="sv" xmlns:th="http://www.w3.org/1999/xhtml">
+<html lang="sv" xmlns:th="http://www.w3.org/1999/xhtml" xmlns:id="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link href="css.css" rel="stylesheet">
+    <script src="js.js"></script>
     <title>News</title>
 
 </head>
@@ -12,7 +13,7 @@
 <div class="top-menu clearfix">
     <div id="top-logo">
         <a th:href=@{index}>
-            <img src="photos/top-logo-MD.png" alt="övre högra logo">
+            <img src="photos/top-logo-MD.png" onclick="">
         </a>
     </div>
     <ul id="menu">
@@ -26,5 +27,13 @@
         <li><a th:href="@{login}">Log in</a></li>
     </ul>
 </div>
-<div id="Pakaaa"><p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quia ab incidunt reiciendis hic minima perspiciatis neque? Adipisci quod asperiores tempore provident repudiandae laboriosam quia soluta beatae suscipit, facere consequatur praesentium?</p></div>
+<div class="top-menu clearfix">
+<div id="Pakaaa">
+    <img id="musiclogo" src="photos/top-logo-MD.png" value="PLAY"  onclick="play()">
+    <audio id="audio" src="photos/packaaa.mp3" ></audio>
+
+
+
+</div>
+</div>
 </body>

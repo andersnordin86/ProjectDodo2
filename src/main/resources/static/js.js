@@ -27,4 +27,7 @@ function showSlides(n) {
     dots[slideIndex-1].className += " active";
 }
 
-
+function play(){
+    var audio = document.getElementById("audio");
+    audio.play();
+}
