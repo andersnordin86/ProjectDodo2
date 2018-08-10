@@ -36,7 +36,37 @@ public class LoginRepository {
 
         return false;
     }
-
+    public void addMember(String username, String firstname, String lastname, String password, String email) {
+        try {
+            System.out.println("addmember");
+            Connection conn = dataSource.getConnection();
+            PreparedStatement ps = conn.prepareStatement("INSERT INTO members(username,firstname,lastname,password,email) VALUES(?,?,?,?,?)", new String[] {"id"} );
+            ps.setString(1,username);
+            ps.setString(2,firstname);
+            ps.setString(3,lastname);
+            ps.setString(4,password);
+            ps.setString(5,email);
+            ps.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+    public Boolean checkMember(String userName, String email) {
+        try {
+            Connection conn = dataSource.getConnection();
+            PreparedStatement ps = conn.prepareStatement("SELECT * FROM members WHERE username=? OR email=?");
+            ps.setString(1, userName);
+            ps.setString(2, email);
+            ResultSet resultSet = ps.executeQuery();
+            System.out.println(ps);
+            if (resultSet.next()) {
+                return true;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
     public List<Members> getUsers() {
         List <Members> allUsers = new ArrayList<>();
 

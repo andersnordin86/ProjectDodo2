@@ -42,4 +42,19 @@ public class LoginController {
         else
             return "redirect:login";
     }
+    @PostMapping("/home")
+    public String registerMember (@RequestParam String username,
+                                @RequestParam String firstname,
+                                @RequestParam String lastname,
+                                @RequestParam String password,
+                                 @RequestParam String email)  {
+
+        Boolean checkMember = loginRepository.checkMember(username, email);
+        if (!checkMember) {
+            loginRepository.addMember(username, firstname, lastname, password, email);
+            return "home";
+        }
+        else
+        return "/home";
+    }
 }
