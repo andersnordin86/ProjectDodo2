@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="sv" xmlns:th="http://www.w3.org/1999/xhtml">
+<html lang="sv" xmlns:th="http://www.w3.org/1999/xhtml" xmlns:height="http://www.w3.org/1999/xhtml"
+      xmlns:wwidth="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,7 +10,6 @@
 
 </head>
 <body>
-</div>
 <div class="top-menu clearfix">
     <div id="top-logo">
         <a th:href=@{index}>
@@ -26,7 +26,12 @@
         <li><a th:href="@{about}">About us</a></li>
         <li><a th:href="@{login}">Log in</a></li>
     </ul>
+
+</div>
+<div id="Players"><p>This is our team:</p>
+<div class="playersdiv" th:each="player : ${allPlayers}">
+    <img id="fotot" th:src="${player.image}")>
 </div>
 </div>
-<div id="Players"><p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quia ab incidunt reiciendis hic minima perspiciatis neque? Adipisci quod asperiores tempore provident repudiandae laboriosam quia soluta beatae suscipit, facere consequatur praesentium?</p></div>
+
 </body>

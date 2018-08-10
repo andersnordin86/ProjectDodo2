@@ -18,6 +18,9 @@ public class pageController {
     @Autowired
     private photoRepository pr;
 
+    @Autowired
+    private PlayerRepository plr;
+
     @GetMapping("/about")
     public String getAbout() {
         return "aboutus";
@@ -53,8 +56,9 @@ public class pageController {
     }
 
     @GetMapping("/players")
-    public String getPlayers() {
-        return "players";
+    public ModelAndView getPlayers() {
+        List<Player> players = plr.getPlayers();
+        return new ModelAndView("players").addObject("allPlayers", players);
     }
 
     @GetMapping("/index")
