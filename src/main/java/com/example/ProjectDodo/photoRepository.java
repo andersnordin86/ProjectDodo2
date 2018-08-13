@@ -20,17 +20,44 @@ public class photoRepository {
 
     public List<photos> getphotos() {
         List<photos> allPhotos = new ArrayList<>();
+        Connection conn = null;
         try {
-            Connection conn = dataSource.getConnection();
+            conn = dataSource.getConnection();
             PreparedStatement ps = conn.prepareStatement("SELECT * FROM gallery");
             ResultSet resultSet = ps.executeQuery();
-            while(resultSet.next()) {
+            while (resultSet.next()) {
                 photos p = new photos(resultSet.getInt("imageID"), resultSet.getString("url"), resultSet.getString("title"));
                 allPhotos.add(p);
             }
         } catch (SQLException e) {
             System.out.println(e.getMessage());
+        } finally {
+            try {
+                conn.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
         }
         return allPhotos;
+    }
+
+    public void addNewPhoto(String url, String title) {
+        Connection conn = null;
+        try {
+            conn = dataSource.getConnection();
+            PreparedStatement ps = conn.prepareStatement("INSERT INTO gallery(url, title) VALUES(?,?)", new String[]{"imageID"});
+            ps.setString(1, url);
+            ps.setString(2, title);
+            ps.executeUpdate();
+        } catch (
+                SQLException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                conn.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
     }
 }

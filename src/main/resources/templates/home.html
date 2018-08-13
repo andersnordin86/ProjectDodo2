@@ -45,7 +45,20 @@
     <input type="submit" value="Create new story">
 </form>
 <hr>
+
 <h2>Edit information</h2>
+
+
+<hr>
+<h2>Post new photo</h2>
+<form action="/addnewphoto" method="post">
+    <input type="text" name="title" placeholder="title"><br>
+    <input type="text" name="url" placeholder="ImageURL"><br>
+    <input type="submit" value="Create new photo">
+</form>
+
+<hr>
+
 <div class="membersedit" th:each="member : ${members}">
     <form action="/changemembersinfo" method="post">
     <div> Firstname: <input type="text" name="firstname" placeholder="Firstname" th:value="${member.firstname}"></div>

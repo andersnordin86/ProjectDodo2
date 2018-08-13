@@ -15,8 +15,9 @@ public class NewsRepository {
     public DataSource dataSource;
 
     public void addNews(String headline, String storytext, String imageurl) {
+        Connection conn = null;
         try {
-            Connection conn = dataSource.getConnection();
+            conn = dataSource.getConnection();
             PreparedStatement ps = conn.prepareStatement("INSERT INTO stories(headline, storytext, imageurl) VALUES(?,?,?)", new String[] {"id"} );
             ps.setString(1,headline);
             ps.setString(2,storytext);
@@ -26,14 +27,21 @@ public class NewsRepository {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+        finally {
+            try {
+                conn.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
     }
 
     public List<Stories> getStories() {
         List <Stories> allStories = new ArrayList<>();
         List <Stories> allStoriesNewFirst = new ArrayList<>();
-
+        Connection conn = null;
         try {
-            Connection conn = dataSource.getConnection();
+            conn = dataSource.getConnection();
             PreparedStatement ps = conn.prepareStatement("SELECT * FROM stories");
             ResultSet resultSet = ps.executeQuery();
 
@@ -48,6 +56,13 @@ public class NewsRepository {
             }
         } catch (SQLException e) {
             e.printStackTrace();
+        }
+        finally {
+            try {
+                conn.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
         }
         for (int i =allStories.size()-1;i>0;i--){
             allStoriesNewFirst.add(allStories.get(i));
