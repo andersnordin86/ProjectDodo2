@@ -21,16 +21,24 @@ public class pageController {
     private photoRepository pr;
     @Autowired
     private NewsRepository newsRepository;
+    @Autowired
+    private MembersRepository membersRepository;
 
     private List<Stories> allStories = new ArrayList<>();
 
     @GetMapping("/home")
-    public String secret(HttpServletRequest request) {
+    public ModelAndView secret(HttpServletRequest request) {
+        System.out.println("fel");
         HttpSession session = request.getSession(true);
-        if (session.getAttribute("loggedIn") != null)
-            return "home";
-        else
-            return "redirect:login";
+        List<Members> members = membersRepository.getAllMembers();
+        if (session.getAttribute("loggedIn") != null) {
+            System.out.println("fel2");
+            return new ModelAndView("home").addObject("members",members);
+
+        } else {
+            System.out.println("fel3");
+            return new ModelAndView("login");
+        }
     }
 
 

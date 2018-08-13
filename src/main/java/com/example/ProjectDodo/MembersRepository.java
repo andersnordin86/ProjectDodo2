@@ -39,7 +39,7 @@ public class MembersRepository {
 
     public void addMember(String username, String firstname, String lastname, String password, String email) {
         try {
-            System.out.println("addmember");
+
             Connection conn = dataSource.getConnection();
             PreparedStatement ps = conn.prepareStatement("INSERT INTO members(username,firstname,lastname,password,email) VALUES(?,?,?,?,?)", new String[]{"id"});
             ps.setString(1, username);
@@ -52,8 +52,14 @@ public class MembersRepository {
             e.printStackTrace();
         }
     }
+    public void editMemberInformation(String username, String firstname, String lastname, String password, String email){
+        try {
+            Connection conn = dataSource.getConnection();
+            PreparedStatement ps = conn.prepareStatement("UPDATE members SET username, firstname, lastname, password, email WHERE id = ?" )
+        }
+    }
 
-    public List<Members> getUsers() {
+    public List<Members> getAllMembers() {
         List<Members> allUsers = new ArrayList<>();
 
         try {
@@ -62,9 +68,37 @@ public class MembersRepository {
             ResultSet resultSet = ps.executeQuery();
 
             while (resultSet.next()) {
-                Members user = new Members(resultSet.getInt("id"), resultSet.getString("name"),
-                        resultSet.getString("email"), resultSet.getString("username"),
-                        resultSet.getString("password"), resultSet.getDate("created"), resultSet.getDate("lastlogin"), resultSet.getString("email"), resultSet.getBoolean("admin"));
+                Members user = new Members(resultSet.getString("username"),
+
+                        resultSet.getString("firstname"),
+                        resultSet.getString("lastname"),
+                        resultSet.getString("password"),
+                        resultSet.getString("email"));
+
+
+                        allUsers.add(user);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return allUsers;
+    }
+    public List<Members> getLoggdeInMembers() {
+        List<Members> allUsers = new ArrayList<>();
+
+        try {
+            Connection conn = dataSource.getConnection();
+            PreparedStatement ps = conn.prepareStatement("SELECT * FROM members WHERE username");
+            ResultSet resultSet = ps.executeQuery();
+
+            while (resultSet.next()) {
+                Members user = new Members(resultSet.getString("username"),
+                        resultSet.getString("password"),
+                        resultSet.getString("firstname"),
+                        resultSet.getString("lastname"),
+                        resultSet.getString("email"));
+
 
                 allUsers.add(user);
             }
@@ -74,5 +108,6 @@ public class MembersRepository {
 
         return allUsers;
     }
+
 
 }
