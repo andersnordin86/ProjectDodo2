@@ -188,6 +188,10 @@ body {
     display: none;
 }
 
+.mySlides img {
+    border-radius: 25px;
+}
+
 /* Next & previous buttons */
 .prev, .next {
     /*cursor: pointer;*/
