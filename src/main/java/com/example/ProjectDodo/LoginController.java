@@ -27,8 +27,7 @@ public class LoginController {
         if (member) {
             HttpSession session = request.getSession(true);
             session.setAttribute("loggedIn", true);
-            session.setAttribute(session.getId(), );
-            session.getId()
+
             return "redirect:home";
 
         } else {

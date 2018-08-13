@@ -52,12 +52,13 @@ public class MembersRepository {
             e.printStackTrace();
         }
     }
-    public void editMemberInformation(String username, String firstname, String lastname, String password, String email){
+  /*  public void editMemberInformation(String username, String firstname, String lastname, String password, String email){
         try {
             Connection conn = dataSource.getConnection();
             PreparedStatement ps = conn.prepareStatement("UPDATE members SET username, firstname, lastname, password, email WHERE id = ?" )
         }
     }
+    */
 
     public List<Members> getAllMembers() {
         List<Members> allUsers = new ArrayList<>();
