@@ -26,7 +26,6 @@ public class LoginRepository {
             ps.setString(1, userName);
             ps.setString(2, email);
             ResultSet resultSet = ps.executeQuery();
-            System.out.println(ps);
             if (resultSet.next()) {
                 return true;
             }
