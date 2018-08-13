@@ -28,6 +28,8 @@ public class MembersController {
         else
             return "home";
     }
+
+/*
     @PostMapping("/changemembersinfo")
     public String editMemberInformation (@RequestParam String username,
                                          @RequestParam String firstname,
@@ -45,5 +47,5 @@ public class MembersController {
                 return "home";
 
     }
-
+*/
 }
