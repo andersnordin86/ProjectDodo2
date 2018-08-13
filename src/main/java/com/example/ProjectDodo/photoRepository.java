@@ -25,7 +25,7 @@ public class photoRepository {
             conn = dataSource.getConnection();
             PreparedStatement ps = conn.prepareStatement("SELECT * FROM gallery");
             ResultSet resultSet = ps.executeQuery();
-            while(resultSet.next()) {
+            while (resultSet.next()) {
                 photos p = new photos(resultSet.getInt("imageID"), resultSet.getString("url"), resultSet.getString("title"));
                 allPhotos.add(p);
             }
@@ -39,5 +39,25 @@ public class photoRepository {
             }
         }
         return allPhotos;
+    }
+
+    public void addNewPhoto(String url, String title) {
+        Connection conn = null;
+        try {
+            conn = dataSource.getConnection();
+            PreparedStatement ps = conn.prepareStatement("INSERT INTO gallery(url, title) VALUES(?,?)", new String[]{"imageID"});
+            ps.setString(1, url);
+            ps.setString(2, title);
+            ps.executeUpdate();
+        } catch (
+                SQLException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                conn.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
     }
 }
