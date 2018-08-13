@@ -23,8 +23,9 @@ public class NewsController {
     @PostMapping("/createstory")
 
     public String createstory (   @RequestParam String headline,
-                                  @RequestParam String storytext){
-                   newsRepository.addNews(headline,storytext);
+                                  @RequestParam String storytext,
+                                  @RequestParam String imageurl){
+                   newsRepository.addNews(headline,storytext,imageurl);
                    return "redirect:home";
     }
 }

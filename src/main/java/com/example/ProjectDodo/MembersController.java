@@ -26,6 +26,24 @@ public class MembersController {
             return "home";
         }
         else
-            return "/home";
+            return "home";
     }
+    @PostMapping("/changemembersinfo")
+    public String editMemberInformation (@RequestParam String username,
+                                         @RequestParam String firstname,
+                                         @RequestParam String lastname,
+                                         @RequestParam String password,
+                                         @RequestParam String email)  {
+
+        Boolean checkMember = loginRepository.checkUsernameAndEmail(username, email);
+        if (!checkMember){
+            membersRepository.editMemberInformation(username, firstname, lastname, password, email);
+            return "home";
+            }
+            else
+            System.out.println("username or email is in use");
+                return "home";
+
+    }
+
 }

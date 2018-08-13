@@ -8,26 +8,27 @@ public class Stories {
     private Date createddate;
     private Date lastetided;
     private String createdby;
-    private String image;
+    private String imageurl;
     private String location;
     private String headline;
     private String storytext;
 
-    public Stories(int id, Date createddate, Date lastetided, String createdby, String image, String location, String headline, String storytext) {
+    public Stories(int id, Date createddate, Date lastetided, String createdby, String imageurl, String location, String headline, String storytext) {
         this.id = id;
         this.createddate = createddate;
         this.lastetided = lastetided;
         this.createdby = createdby;
-        this.image = image;
+        this.imageurl = imageurl;
         this.location = location;
         this.headline = headline;
         this.storytext = storytext;
     }
 
-    public Stories(Date createddate, String headline, String storytext) {
+    public Stories(Date createddate, String headline, String storytext,String imageurl) {
         this.createddate = createddate;
         this.headline = headline;
         this.storytext = storytext;
+        this.imageurl = imageurl;
     }
 
     public int getId() {
@@ -62,12 +63,12 @@ public class Stories {
         this.createdby = createdby;
     }
 
-    public String getImage() {
-        return image;
+    public String getImageurl() {
+        return imageurl;
     }
 
-    public void setImage(String image) {
-        this.image = image;
+    public void setImageurl(String image) {
+        this.imageurl = image;
     }
 
     public String getLocation() {

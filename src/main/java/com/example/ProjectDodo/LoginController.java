@@ -15,6 +15,8 @@ public class LoginController {
     @Autowired
     private MembersRepository membersRepository;
 
+
+
     @GetMapping("/login")
     public String getLogin() {
         return "login";
@@ -25,6 +27,8 @@ public class LoginController {
         if (member) {
             HttpSession session = request.getSession(true);
             session.setAttribute("loggedIn", true);
+            session.setAttribute(session.getId(), );
+            session.getId()
             return "redirect:home";
 
         } else {

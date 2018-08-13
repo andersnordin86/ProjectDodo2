@@ -25,6 +25,14 @@ public class Members {
         this.admin = admin;
     }
 
+    public Members(String username, String firstname, String lastname, String password, String email) {
+        this.username = username;
+        this.firstname = firstname;
+        this.lastname = lastname;
+        this.password = password;
+        this.email = email;
+    }
+
     public int getId() {
         return id;
     }

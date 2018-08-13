@@ -14,12 +14,13 @@ public class NewsRepository {
     @Autowired
     public DataSource dataSource;
 
-    public void addNews(String headline, String storytext) {
+    public void addNews(String headline, String storytext, String imageurl) {
         try {
             Connection conn = dataSource.getConnection();
-            PreparedStatement ps = conn.prepareStatement("INSERT INTO stories(headline, storytext) VALUES(?,?)", new String[] {"id"} );
+            PreparedStatement ps = conn.prepareStatement("INSERT INTO stories(headline, storytext, imageurl) VALUES(?,?,?)", new String[] {"id"} );
             ps.setString(1,headline);
             ps.setString(2,storytext);
+            ps.setString(3, imageurl);
 
             ps.executeUpdate();
         } catch (SQLException e) {
@@ -40,7 +41,8 @@ public class NewsRepository {
                 Stories story = new Stories(
                         resultSet.getDate("createddate"),
                         resultSet.getString("headline"),
-                        resultSet.getString("storytext"));
+                        resultSet.getString("storytext"),
+                        resultSet.getString("imageurl"));
                 allStories.add(story);
 
             }

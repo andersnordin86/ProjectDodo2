@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
@@ -19,9 +19,23 @@
 <h2>Create stories</h2>
 <form action="/createstory" method="post">
     <input type="text" name="headline" placeholder="Headline"><br>
+    <input type="text" name="imageurl" placeholder="ImageURL"><br>
     <textarea name="storytext" placeholder="Storytext" rows="10" cols="50"></textarea>
     <input type="submit" value="Create new story">
 </form>
+<hr>
+<div class="membersedit" th:each="member : ${members}">
+    <form action="/changemembersinfo" method="post">
+    <div> Username: <input type="text" name="username" placeholder="Username" th:value="${member.username}"></div>
+    <div> Firstname: <input type="text" name="firstname" placeholder="Firstname" th:value="${member.firstname}"></div>
+    <div> Lastname: <input type="text" name="lastname" placeholder="Lastname" th:value="${member.lastname}"></div>
+    <div> Password: <input type="password" name="password" th:value="${member.password}"></div>
+    <div> Email: <input type="text" name="email" placeholder="Email" th:value="${member.email}"></div>
+        <input type="submit" value="Save">
+    </form>
+    <hr>
+
+</div>
 
 </body>
 </html>
