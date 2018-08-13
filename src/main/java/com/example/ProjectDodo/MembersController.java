@@ -29,7 +29,7 @@ public class MembersController {
             return "home";
     }
 
-/*
+
     @PostMapping("/changemembersinfo")
     public String editMemberInformation (@RequestParam String username,
                                          @RequestParam String firstname,
@@ -37,15 +37,15 @@ public class MembersController {
                                          @RequestParam String password,
                                          @RequestParam String email)  {
 
-        Boolean checkMember = loginRepository.checkUsernameAndEmail(username, email);
+        Boolean checkMember = membersRepository.checkToEditUserInformation(username, email);
         if (!checkMember){
             membersRepository.editMemberInformation(username, firstname, lastname, password, email);
-            return "home";
+            return "redirect:home";
             }
             else
             System.out.println("username or email is in use");
-                return "home";
+                return "redirect:home";
 
     }
-*/
+
 }

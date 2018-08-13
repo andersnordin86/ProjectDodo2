@@ -46,6 +46,9 @@
 </form>
 <hr>
 
+<h2>Edit information</h2>
+
+
 <hr>
 <h2>Post new photo</h2>
 <form action="/addnewphoto" method="post">
@@ -55,12 +58,14 @@
 </form>
 
 <hr>
+
 <div class="membersedit" th:each="member : ${members}">
     <form action="/changemembersinfo" method="post">
-    <div> Username: <input type="text" name="username" placeholder="Username" th:value="${member.username}"></div>
     <div> Firstname: <input type="text" name="firstname" placeholder="Firstname" th:value="${member.firstname}"></div>
     <div> Lastname: <input type="text" name="lastname" placeholder="Lastname" th:value="${member.lastname}"></div>
-    <div> Password: <input type="password" name="password" th:value="${member.password}"></div>
+        <div> Username: <input type="text" name="username" placeholder="Username" th:value="${member.username}"></div>
+
+        <div> Password: <input type="password" name="password" th:value="${member.password}"></div>
     <div> Email: <input type="text" name="email" placeholder="Email" th:value="${member.email}"></div>
         <input type="submit" value="Save">
     </form>

@@ -17,6 +17,8 @@ public class MembersRepository {
     @Autowired
     public DataSource dataSource;
 
+    private int userid;
+
     public boolean getMember(String userName, String password) {
         Connection conn = null;
         try {
@@ -26,6 +28,7 @@ public class MembersRepository {
             ps.setString(2, password);
             ResultSet resultSet = ps.executeQuery();
             if (resultSet.next()) {
+                this.userid = resultSet.getInt("id");
                 return true;
             } else {
                 return false;
@@ -59,13 +62,22 @@ public class MembersRepository {
             e.printStackTrace();
         }
     }
-  /*  public void editMemberInformation(String username, String firstname, String lastname, String password, String email){
+    public void editMemberInformation(String username, String firstname, String lastname, String password, String email){
         try {
             Connection conn = dataSource.getConnection();
-            PreparedStatement ps = conn.prepareStatement("UPDATE members SET username, firstname, lastname, password, email WHERE id = ?" )
+            PreparedStatement ps = conn.prepareStatement("UPDATE members SET username=?, firstname=?, lastname=?, password=?, email=? WHERE id = ?" );
+            ps.setString(1, username);
+            ps.setString(2, firstname);
+            ps.setString(3,lastname);
+            ps.setString(4,password);
+            ps.setString(5,email);
+            ps.setInt(6,this.userid);
+            ps.executeUpdate();
+        }catch (SQLException e){
+            e.printStackTrace();
         }
     }
-    */
+
 
     public List<Members> getAllMembers() {
         List<Members> allUsers = new ArrayList<>();
@@ -94,17 +106,19 @@ public class MembersRepository {
     }
     public List<Members> getLoggdeInMembers() {
         List<Members> allUsers = new ArrayList<>();
-
+        Connection conn = null;
         try {
-            Connection conn = dataSource.getConnection();
-            PreparedStatement ps = conn.prepareStatement("SELECT * FROM members WHERE username");
+            conn = dataSource.getConnection();
+            PreparedStatement ps = conn.prepareStatement("SELECT * FROM members WHERE id=?");
+            ps.setInt(1,this.userid);
             ResultSet resultSet = ps.executeQuery();
 
             while (resultSet.next()) {
                 Members user = new Members(resultSet.getString("username"),
-                        resultSet.getString("password"),
+
                         resultSet.getString("firstname"),
                         resultSet.getString("lastname"),
+                        resultSet.getString("password"),
                         resultSet.getString("email"));
 
 
@@ -113,9 +127,32 @@ public class MembersRepository {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-
+        finally {
+            try {
+                conn.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
         return allUsers;
     }
 
+    public Boolean checkToEditUserInformation(String userName, String email) {
+            Connection conn = null;
+        try {
+            conn = dataSource.getConnection();
+            PreparedStatement ps = conn.prepareStatement("SELECT * FROM members WHERE (username=? OR email=?) AND NOT id=? ");
+            ps.setString(1, userName);
+            ps.setString(2, email);
+            ps.setInt(3,this.userid);
+            ResultSet resultSet = ps.executeQuery();
+            if (resultSet.next()) {
+                return true;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
 
 }

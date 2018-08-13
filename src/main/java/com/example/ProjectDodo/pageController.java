@@ -29,15 +29,15 @@ public class pageController {
 
     @GetMapping("/home")
     public ModelAndView secret(HttpServletRequest request) {
-        System.out.println("fel");
+
         HttpSession session = request.getSession(true);
-        List<Members> members = membersRepository.getAllMembers();
+        List<Members> members = membersRepository.getLoggdeInMembers();
         if (session.getAttribute("loggedIn") != null) {
-            System.out.println("fel2");
+
             return new ModelAndView("home").addObject("members",members);
 
         } else {
-            System.out.println("fel3");
+
             return new ModelAndView("login");
         }
     }
