@@ -142,11 +142,13 @@ body {
     display: flex;
     max-width: 1024px;
     margin: auto;
+
     /*align-items: center;
     justify-content: center;*/
 }
 .flexgrid {
     flex: 1;
+    border-radius: 25px 0px 0px 25px;
 }
 
 
@@ -159,6 +161,7 @@ body {
 #alftafoto {
     width: auto;
     max-height: 400px;
+    border-radius: 0px 25px 25px 0px;
 }
 
 .contact-table {
