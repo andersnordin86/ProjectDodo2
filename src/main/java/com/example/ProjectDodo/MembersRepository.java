@@ -18,9 +18,9 @@ public class MembersRepository {
     public DataSource dataSource;
 
     public boolean getMember(String userName, String password) {
-
+        Connection conn = null;
         try {
-            Connection conn = dataSource.getConnection();
+            conn = dataSource.getConnection();
             PreparedStatement ps = conn.prepareStatement("SELECT * FROM members WHERE username=? AND password=?");
             ps.setString(1, userName);
             ps.setString(2, password);
@@ -32,6 +32,13 @@ public class MembersRepository {
             }
         } catch (SQLException e) {
             e.printStackTrace();
+        }
+        finally {
+            try {
+                conn.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
         }
 
         return false;

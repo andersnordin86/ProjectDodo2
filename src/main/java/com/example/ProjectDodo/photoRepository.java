@@ -20,8 +20,9 @@ public class photoRepository {
 
     public List<photos> getphotos() {
         List<photos> allPhotos = new ArrayList<>();
+        Connection conn = null;
         try {
-            Connection conn = dataSource.getConnection();
+            conn = dataSource.getConnection();
             PreparedStatement ps = conn.prepareStatement("SELECT * FROM gallery");
             ResultSet resultSet = ps.executeQuery();
             while(resultSet.next()) {
@@ -30,6 +31,12 @@ public class photoRepository {
             }
         } catch (SQLException e) {
             System.out.println(e.getMessage());
+        } finally {
+            try {
+                conn.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
         }
         return allPhotos;
     }

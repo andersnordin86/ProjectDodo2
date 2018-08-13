@@ -20,8 +20,9 @@ public class LoginRepository {
 
 
     public Boolean checkUsernameAndEmail(String userName, String email) {
+        Connection conn = null;
         try {
-            Connection conn = dataSource.getConnection();
+            conn = dataSource.getConnection();
             PreparedStatement ps = conn.prepareStatement("SELECT * FROM members WHERE username=? OR email=?");
             ps.setString(1, userName);
             ps.setString(2, email);
@@ -32,6 +33,13 @@ public class LoginRepository {
             }
         } catch (SQLException e) {
             e.printStackTrace();
+        }
+        finally {
+            try {
+                conn.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
         }
         return false;
     }

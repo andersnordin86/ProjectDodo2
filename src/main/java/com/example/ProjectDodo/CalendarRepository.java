@@ -22,8 +22,9 @@ public class CalendarRepository {
 
     public List<Calendar> getEvents() {
         List<Calendar> allEvents = new ArrayList<>();
+        Connection conn = null;
         try {
-            Connection conn = dataSource.getConnection();
+            conn = dataSource.getConnection();
             PreparedStatement ps = conn.prepareStatement("SELECT * FROM Calendar");
             ResultSet resultSet = ps.executeQuery();
             while (resultSet.next()) {
@@ -33,6 +34,13 @@ public class CalendarRepository {
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
+        finally {
+            try {
+                conn.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
         return allEvents;
     }
 
@@ -40,8 +48,9 @@ public class CalendarRepository {
     public void newEvent(String start,
                          String title,
                          String description) {
+        Connection conn = null;
         try {
-            Connection conn = dataSource.getConnection();
+           conn = dataSource.getConnection();
             PreparedStatement ps = conn.prepareStatement("INSERT INTO calendar(start, title, description)VALUES(?, ?, ?)");
             ps.setString(1, start);
             ps.setString(2, title);
@@ -50,6 +59,13 @@ public class CalendarRepository {
 
         } catch (SQLException e) {
             e.printStackTrace();
+        }
+        finally {
+            try {
+                conn.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
         }
     }
 }
