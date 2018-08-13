@@ -34,7 +34,7 @@ public class pageController {
         List<Members> members = membersRepository.getLoggdeInMembers();
         if (session.getAttribute("loggedIn") != null) {
 
-            return new ModelAndView("home").addObject("members",members);
+            return new ModelAndView("home").addObject("members",members).addObject("user", members.get(0));
 
         } else {
 

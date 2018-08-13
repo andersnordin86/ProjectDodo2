@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <link href="css.css" rel="stylesheet">
     <title>Profile page</title>
+
 </head>
 <body>
 <div class="top-menu clearfix">
@@ -23,7 +24,7 @@
         <li><a th:href="@{login}">Log in</a></li>
     </ul>
 </div>
-<h1>Welcome home</h1>
+<h1 class="welcomemessage">Welcome <span th:text="${user.firstname}"></span></h1>
 <form action="logout" method="get">
     <input type="submit" name="logoutbutton" value="Logout">
 </form>
