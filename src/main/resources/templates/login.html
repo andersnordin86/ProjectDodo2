@@ -22,17 +22,17 @@
         <li><a th:href="@{photos}">Photo Gallery</a></li>
         <li><a th:href="@{contactinformation}">Contact</a></li>
         <li><a th:href="@{about}">About us</a></li>
+        <li><a th:href="@{login}">Log in</a></li>
     </ul>
 </div>
 
-
-<p>Enter your username and password!</p>
-<form action="/login" method="post">
-    <input type="text" name="username" placeholder="Enter username">
-    <input type="password" name="password" placeholder="Enter password">
-    <input type="submit" value="Login"/>
-
-</form>
+<div class="login">
+    <input type="text" placeholder="Username" id="username">
+    <input type="password" placeholder="password" id="password">
+    <a href="#" class="forgot">forgot password?</a>
+    <input type="submit" value="Sign In">
+</div>
+<div class="shadow"></div>
 
 </body>
 </html>
