@@ -104,7 +104,18 @@ body {
     text-decoration: none;
     opacity:0.4;
 }
+#frontphoto {
+    height: 50%;
+    margin: inherit;
+    width: 40%;
+    margin-left: 30%;
+}
+#buttomfront {
+    width: 50%;
+    height: 15%;
+    margin-left: 26%;
 
+}
 #Stories {
     width: 40%;
     height: 60%;
