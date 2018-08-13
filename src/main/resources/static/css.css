@@ -297,6 +297,9 @@ body {
 .newsdiv{
     text-align: center;
 }
+.newsdiv img {
+    border-radius: 25px;
+}
 html { height: 100% }
 ::-moz-selection { background: #fe57a1; color: #fff; text-shadow: none; }
 ::selection { background: #fe57a1; color: #fff; text-shadow: none; }
